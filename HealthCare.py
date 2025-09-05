@@ -1,13 +1,12 @@
 class ClinicAppointment:
     def __init__(self):
-        # Doctors with available slots
         self.doctors = ["Dr. Sharma", "Dr. Patel", "Dr. Mehta"]
         self.time_slots = ["10am", "11am", "12pm", "2pm", "3pm"]
 
-        # Store appointments: {mobile: {patient_info, doctor, slot}}
+        
         self.appointments = {}
 
-        # Track slot bookings per doctor
+       
         self.slot_bookings = {
             doctor: {slot: [] for slot in self.time_slots} for doctor in self.doctors
         }
@@ -17,7 +16,7 @@ class ClinicAppointment:
         age = input("Enter Age: ")
         mobile = input("Enter Mobile Number: ")
 
-        # Prevent duplicate booking for same number
+        
         if mobile in self.appointments:
             print("❌ Appointment already exists for this mobile number.")
             return
@@ -40,12 +39,12 @@ class ClinicAppointment:
             return
         slot = self.time_slots[slot_choice]
 
-        # Check if slot is full
+        
         if len(self.slot_bookings[doctor][slot]) >= 3:
             print("❌ Slot is full for this doctor. Please choose another slot/doctor.")
             return
 
-        # Save appointment
+
         self.appointments[mobile] = {
             "name": name,
             "age": age,
@@ -96,8 +95,7 @@ class ClinicAppointment:
             else:
                 print("❌ Invalid choice. Try again.")
 
-
-# Run system
 if __name__ == "__main__":
     clinic = ClinicAppointment()
     clinic.menu()
+
